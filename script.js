@@ -70,6 +70,7 @@ const ticTacToe = (function () {
             player1.score++;
             player1Score.textContent = player1.score;
             winner.name = 'Player O';
+            activePlayer = null;
         } else if (gameBoard.topRow[0] === 'x' && gameBoard.topRow[1] === 'x' && gameBoard.topRow[2] === 'x' ||
             gameBoard.midRow[0] === 'x' && gameBoard.midRow[1] === 'x' && gameBoard.midRow[2] === 'x' ||
             gameBoard.botRow[0] === 'x' && gameBoard.botRow[1] === 'x' && gameBoard.botRow[2] === 'x'||
@@ -84,6 +85,7 @@ const ticTacToe = (function () {
             player2.score++;
             player2Score.textContent = player2.score;
             winner.name = 'Player X';
+            activePlayer = null;
         } else if (gameBoard.topRow[0] !== '' && gameBoard.topRow[1] !== '' && gameBoard.topRow[2] !== ''
             && gameBoard.midRow[0] !== '' && gameBoard.midRow[1] !== '' && gameBoard.midRow[2] !== ''
             && gameBoard.botRow[0] !== '' && gameBoard.botRow[1] !== '' && gameBoard.botRow[2] !== '') {
@@ -92,6 +94,7 @@ const ticTacToe = (function () {
             tiePlay.score++
             tieScore.textContent = tiePlay.score;
             winner.name = 'No Winner';
+            activePlayer = null;
         }
     };
 
@@ -199,9 +202,7 @@ const playGame = (function () {
     restart.addEventListener('click', () => {
         if (ticTacToe.winner.name !== null) {
             return;
-        } else if (ticTacToe.winner.name == `No Winner`) {
-            
-        }
+        } 
 
         Object.keys(gameBoard).forEach(row => {
         gameBoard[row].fill('');});
